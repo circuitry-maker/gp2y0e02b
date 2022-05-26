@@ -1,0 +1,22 @@
+[package]
+name = "gp2y0e02b"
+version = "0.1.0"
+description = "A rust driver for the GP2Y0E02B (SHARP I2C Distance Measuring Sensor, 4-50cm)"
+authors = ["Luca Zulian <lucagiuggia@gmail.com>"]
+categories = ["embedded", "hardware-support", "no-std"]
+keywords = ["hal", "IO"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/lucazulian/gp2y0e02b"
+edition = "2018"
+exclude = []
+
+[dependencies]
+embedded-hal = "0.2.3"
+generic-array = "0.14.5"
+nb = "1.0.0"
+
+[dependencies.cast]
+default-features = false
+version = "0.3.0"
+uninit = "0.1.0"
