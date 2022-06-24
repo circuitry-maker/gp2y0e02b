@@ -10,7 +10,7 @@
 
 Include this [library](https://crates.io/crates/gp2y0e02b) as a dependency in your `Cargo.toml`:
 
-```rust
+```yaml
 [dependencies.gp2y0e02b]
 version = "<version>"
 ```
