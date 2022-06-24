@@ -1,6 +1,6 @@
 [package]
 name = "gp2y0e02b"
-version = "0.1.0"
+version = "0.1.1"
 description = "A rust driver for the GP2Y0E02B (SHARP I2C Distance Measuring Sensor, 4-50cm)"
 authors = ["Luca Zulian <lucagiuggia@gmail.com>"]
 categories = ["embedded", "hardware-support", "no-std"]

@@ -22,7 +22,7 @@ extern crate nb;
 
 use ehal::blocking::i2c::{Read, Write, WriteRead};
 
-const DEFAULT_ADDRESS: u8 = 0x40;
+const DEFAULT_ADDRESS: u8 = 0x80 >> 1;
 
 /// Struct for GP2Y0E02B
 #[derive(Debug, Copy, Clone)]
@@ -83,13 +83,13 @@ where
         Ok(data)
     }
 
-    fn read_distance(&mut self) -> Result<f32, E> {
+    /// Reads and returns distance measurement in millimeters
+    pub fn read_distance(&mut self) -> Result<f32, E> {
         let high = self.read_byte(0x5E).unwrap() as f32;
         let low = self.read_byte(0x5F).unwrap() as f32;
         let shift = self.read_byte(0x35).unwrap() as u32;
 
         let v = (((high * 16.0) + low) / 16.0) / (u16::pow(2, shift) as f32);
-        //let v = ((((high * 16) + low) / 16) / ral::math::u8::pow(2, shift)) as f32;
 
         Ok(v)
     }
