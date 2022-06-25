@@ -62,13 +62,6 @@ where
         Ok(chip)
     }
 
-    fn read_register(&mut self) -> Result<u8, E> {
-        let mut data: [u8; 1] = [0];
-        let _ = self.com.read(0x35, &mut data);
-
-        Ok(data[0])
-    }
-
     fn read_byte(&mut self, reg: u8) -> Result<u8, E> {
         let mut data: [u8; 1] = [0];
         self.com.write_read(self.address, &[reg], &mut data)?;
