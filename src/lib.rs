@@ -99,7 +99,7 @@ where
     }
 }
 
-/// Register Map (Bank0) from http://www.robot-electronics.co.uk/files/gp2y0e02_03_appl_e.pdf
+/// Register Map (Bank0) from <http://www.robot-electronics.co.uk/files/gp2y0e02_03_appl_e.pdf>
 #[allow(non_camel_case_types)]
 #[derive(Copy, Clone, Debug)]
 pub enum Register {
@@ -144,45 +144,45 @@ pub enum Register {
     /// 0x10=Access SRAM
     SRAM_ACCESS = 0x4C,
 
-    /// Distance[11:4]
-    /// Distance Value =(Distance[11:4]*16+Distance[3:0])/16/2^n
+    /// Distance\[11:4\]
+    /// Distance Value =(Distance\[11:4\]*16+Distance\[3:0\])/16/2^n
     /// n : Shift Bit (Register 0x35)
     DISTANCE_11_4 = 0x5E,
 
-    /// Distance[3:0]
-    /// Distance Value =(Distance[11:4]*16+Distance[3:0])/16/2^n
+    /// Distance\[3:0\]
+    /// Distance Value =(Distance\[11:4\]*16+Distance\[3:0\])/16/2^n
     /// n : Shift Bit (Register 0x35)
     DISTANCE_3_0 = 0x5F,
 
-    /// AE[15:8]
-    /// AE=AE[15:8]*256 + AE[7:0]
+    /// AE\[15:8\]
+    /// AE=AE\[15:8\]*256 + AE\[7:0\]
     /// Before read out,
     /// it need to write Address(0xEC) = Data(0xFF)
     AE_15_8 = 0x64,
 
-    /// AE[7:0]
-    /// AE=AE[15:8]*256 + AE[7:0]
+    /// AE\[7:0\]
+    /// AE=AE\[15:8\]*256 + AE\[7:0\]
     /// Before read out,
     /// it need to write Address(0xEC) = Data(0xFF)
     AE_7_0 = 0x65,
 
-    /// AG[7:0]
-    /// AE=AE[15:8]*256 + AE[7:0]
+    /// AG\[7:0\]
+    /// AE=AE\[15:8\]*256 + AE\[7:0\]
     /// Before read out,
     /// it need to write Address(0xEC) = Data(0xFF)
     AG_7_0 = 0x67,
 
-    /// Cover Compensation[5:0]
+    /// Cover Compensation\[5:0\]
     ///  Cover compensation coefficient =
-    /// Cover Comp.[10:6]*64 + Cover Comp.[5:0]
-    /// Cover Comp.[5:0] is assigned in Reg Field[7:2] of
+    /// Cover Comp.\[10:6\]*64 + Cover Comp.\[5:0\]
+    /// Cover Comp.\[5:0\] is assigned in Reg Field\[7:2\] of
     /// register 0x8D. So, it need to shift 2 bits toward right.
     COVER_COMPENSATION_5_0 = 0x8D,
 
-    /// Cover Compensation[10:6]
+    /// Cover Compensation\[10:6\]
     ///  Cover compensation coefficient =
-    /// Cover Comp.[10:6]*64 + Cover Comp.[5:0]
-    /// Cover Comp.[5:0] is assigned in Reg Field[7:2] of
+    /// Cover Comp.\[10:6\]*64 + Cover Comp.\[5:0\]
+    /// Cover Comp.\[5:0\] is assigned in Reg Field\[7:2\] of
     /// register 0x8D. So, it need to shift 2 bits toward right.
     COVER_COMPENSATION_10_6 = 0x8E,
 
@@ -230,15 +230,15 @@ pub enum Register {
     /// E-Fuse Read Out
     /// E-Fuse Enable Bit
     /// Specify E-Fuse address in the target bank.
-    /// Ex. A[0]=0x00, B[10]=0x0A, C[63]=0x3F
+    /// Ex. A\[0\]=0x00, B\[10\]=0x0A, C\[63\]=0x3F
     /// 1=load E-Fuse data to Register (Bank3)
     /// 0=Enable, 1=Disable
     E_FUSE_TARGET_ADDRESS_READ_OUT_ENABLE_BIT = 0xC8,
 
     /// E-Fuse Bit Number
     /// E-Fuse Bank Assign
-    /// Assign bit number in the register 0xC9 [7:4]
-    /// Assign bank select in the register 0xC9 [3:0].
+    /// Assign bit number in the register 0xC9 \[7:4\]
+    /// Assign bank select in the register 0xC9 \[3:0\].
     /// 1:BankA, 2:BankB, 3:BankC, 4:BankD, 5:BankE
     E_FUSE_BIT_NUMBER_BANK_ASSIGN = 0xC9,
 
@@ -271,20 +271,20 @@ pub enum Register {
     BANK_SELECT = 0xEF,
 
     /// Right Edge Coordinate (C)
-    /// Spot Size = C－A (=0xF8[7:0]－0xF9[7:0])
+    /// Spot Size = C－A (=0xF8\[7:0\]－0xF9\[7:0\])
     /// Spot Symmetry=|(C－A)－2*B|
-    /// (=|(0xF8[7:0]－0xF9[7:0])－2*0xFA[7:0])|)
+    /// (=|(0xF8\[7:0\]－0xF9\[7:0\])－2*0xFA\[7:0\])|)
     RIGHT_EDGE_COORDINATE = 0xF8,
 
     /// Left Edge Coordinate (A)
-    /// Spot Size = C－A (=0xF8[7:0]－0xF9[7:0])
+    /// Spot Size = C－A (=0xF8\[7:0\]－0xF9\[7:0\])
     /// Spot Symmetry=|(C－A)－2*B|
-    /// (=|(0xF8[7:0]－0xF9[7:0])－2*0xFA[7:0])|)
+    /// (=|(0xF8\[7:0\]－0xF9\[7:0\])－2*0xFA\[7:0\])|)
     LEFT_EDGE_COORDINATE = 0xF9,
 
     /// Peak Coordinate (B)
-    /// Spot Size = C－A (=0xF8[7:0]－0xF9[7:0])
+    /// Spot Size = C－A (=0xF8\[7:0\]－0xF9\[7:0\])
     /// Spot Symmetry=|(C－A)－2*B|
-    /// (=|(0xF8[7:0]－0xF9[7:0])－2*0xFA[7:0])|)
+    /// (=|(0xF8\[7:0\]－0xF9\[7:0\])－2*0xFA\[7:0\])|)
     PEAK_COORDINATE = 0xFA,
 }
