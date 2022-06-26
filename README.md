@@ -20,7 +20,7 @@ Use [embedded-hal](https://github.com/rust-embedded/embedded-hal) implementation
 ```rust
 extern crate gp2y0e02b;
 
-match gp2y0e02b::GP2Y0E02B::default(i2c) {
+match gp2y0e02b::GP2Y0E02B::new(i2c) {
     Ok(mut u) => {
         loop {
             match u.read_distance() {
