@@ -252,11 +252,12 @@ where
 
     /// Reads and returns distance measurement in millimeters
     pub fn read_distance(&mut self) -> Result<f32, E> {
-        let high = self.read_byte(Register::DISTANCE_11_4.addr()).unwrap() as f32;
-        let low = self.read_byte(Register::DISTANCE_3_0.addr()).unwrap() as f32;
+        //  let high = self.read_byte(Register::DISTANCE_11_4.addr()).unwrap() as f32;
+        //  let low = self.read_byte(Register::DISTANCE_3_0.addr()).unwrap() as f32;
+        let [high, low] = self.read_bytes(Register::DISTANCE_11_4.addr()).unwrap();
         let shift = self.read_byte(Register::SHIFT_BIT.addr()).unwrap() as u32;
 
-        let v = (((high * 16.0) + low) / 16.0) / (u16::pow(2, shift) as f32);
+        let v = (((high as f32 * 16.0) + low as f32) / 16.0) / (u16::pow(2, shift) as f32);
 
         Ok(v)
     }
